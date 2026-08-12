@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es-CL">
 <head>
 <meta charset="UTF-8">
@@ -130,6 +130,7 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:12px;
     padding:14px 20px 8px;
     font-size:0.68rem;
     letter-spacing:0.2em;
@@ -139,7 +140,7 @@
   }
   .recipe-row{
     display:flex;
-    align-items:baseline;
+    align-items:center;
     gap:12px;
     padding:13px 20px;
     text-decoration:none;
@@ -167,8 +168,11 @@
   .recipe-name{
     font-size:0.98rem;
     font-weight:500;
-    flex:0 0 auto;
+    flex:1 1 auto;
+    min-width:0;
     white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
   }
   .recipe-dots{
     flex:1 1 auto;
@@ -186,6 +190,7 @@
     display:flex;
     align-items:center;
     gap:5px;
+    flex:0 0 auto;
   }
   .recipe-row:hover .recipe-cta{ color:var(--green-light); }
   .recipe-cta svg{width:11px; height:11px; flex:none;}
@@ -229,15 +234,19 @@
     inset:0;
     z-index:100;
     display:none;
-    align-items:center;
+    align-items:flex-start;
     justify-content:center;
     padding:20px;
+    overflow-y:auto;
     background:rgba(15,13,10,0.78);
     backdrop-filter:blur(5px);
   }
   .access-modal.is-open{display:flex;}
   .access-dialog{
     width:min(100%, 460px);
+    max-height:calc(100dvh - 40px);
+    overflow-y:auto;
+    margin:auto 0;
     padding:32px 26px 26px;
     background:var(--panel);
     border:1px solid var(--line);
@@ -312,6 +321,56 @@
 
   @media (min-width:700px){
     .hero{padding:88px 20px 60px;}
+  }
+
+  /* ---------- MOBILE ---------- */
+  @media (max-width:480px){
+    .wrap{padding:0 14px;}
+    .hero{padding:42px 14px 34px;}
+    .hero h1{font-size:2.15rem;}
+    .hero p{font-size:.94rem;}
+    .modules{padding-top:2px;}
+    .module{margin:28px 0;}
+    .module-numeral{
+      top:10px;
+      left:10px;
+      width:44px;
+      height:44px;
+      font-size:1.9rem;
+    }
+    .recipe-panel-label{
+      align-items:flex-start;
+      flex-wrap:wrap;
+      padding:12px 14px 7px;
+      font-size:.62rem;
+      letter-spacing:.14em;
+      line-height:1.35;
+    }
+    .recipe-panel-label span:last-child{margin-left:auto; white-space:nowrap;}
+    .recipe-row{
+      gap:8px;
+      padding:12px 14px;
+      min-width:0;
+    }
+    .recipe-row:hover,.recipe-row:focus-visible{padding-left:18px;}
+    .recipe-num{min-width:18px; font-size:.8rem;}
+    .recipe-name{font-size:.9rem; line-height:1.25;}
+    .recipe-dots{display:none;}
+    .recipe-cta{font-size:.67rem; letter-spacing:.035em; gap:3px;}
+    .recipe-cta svg{width:10px; height:10px;}
+    .wa-float{right:14px; bottom:14px; width:50px; height:50px;}
+    .wa-float svg{width:23px; height:23px;}
+    .access-modal{padding:12px;}
+    .access-dialog{
+      width:100%;
+      max-height:calc(100dvh - 24px);
+      padding:24px 18px 18px;
+    }
+    .access-lock{margin-bottom:12px;}
+    .access-dialog h2{font-size:1.55rem;}
+    .access-dialog p{font-size:.9rem; margin-bottom:16px;}
+    .access-dialog input{font-size:16px;}
+    .access-dialog button{padding:13px 12px;}
   }
 </style>
 </head>
